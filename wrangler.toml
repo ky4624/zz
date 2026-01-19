@@ -1,0 +1,4 @@
+name = "ZZ"
+type = "static"
+build.command = ""
+build.upload = { dir = "." }
