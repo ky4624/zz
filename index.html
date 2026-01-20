@@ -158,7 +158,7 @@
     <div id="disneyText">新春快乐-ZZ</div>
     
     <!-- 背景音乐 -->
-    <audio id="bgm" src="fafh.MP3" autoplay loop></audio>
+    <audio id="bgm" src="fafh.MP3" loop></audio>
 
     <script>
         // ========== 基础配置 ==========
@@ -168,10 +168,12 @@
         const starsCtx = starsCanvas.getContext('2d');
         const btn = document.getElementById('fireBtn');
         const disneyText = document.getElementById('disneyText');
+        const bgm = document.getElementById('bgm');
         let canvasW, canvasH;
         let fireworks = []; // 烟花数组
         let randomFireTimer = null; // 随机烟花定时器
         let stars = []; // 存储星星位置的数组
+        let musicPlayed = false; // 标记音乐是否已经播放过
         const FIRE_COLORS = ['#ff4e29','#ffd200','#ff9a00','#ffef9f','#ffffff','#ff0050']; // 新春金红配色
 
         // 适配窗口大小
@@ -347,6 +349,16 @@
             requestAnimationFrame(animate);
         }
         animate();
+
+        // ========== 点击屏幕播放音乐 ==========
+        document.addEventListener('click', function() {
+            if (!musicPlayed) {
+                bgm.play().catch(function(error) {
+                    console.log('音乐播放失败:', error);
+                });
+                musicPlayed = true;
+            }
+        });
 
         // ========== 点击按钮触发 ==========
         btn.addEventListener('click', function() {
