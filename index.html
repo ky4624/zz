@@ -153,9 +153,9 @@
     <div id="castle"></div>
     <canvas id="fireworksCanvas"></canvas>
     <canvas id="starsCanvas"></canvas> <!-- 新增星星连线画布 -->
-    <button id="fireBtn">点击绽放 新春快乐 ✨</button>
+    <button id="fireBtn">点击绽放 新年快乐 ✨</button>
     <!-- 迪士尼风格文字元素 -->
-    <div id="disneyText">新春快乐-ZZ</div>
+    <div id="disneyText">新年快乐-ZZ</div>
     
     <!-- 背景音乐 -->
     <audio id="bgm" src="fafh.MP3" loop></audio>
@@ -264,13 +264,13 @@
             }
         }
 
-        // ========== 核心：生成【新春快乐-ZZ】专属烟花 ==========
+        // ========== 核心：生成【新年快乐-ZZ】专属烟花 ==========
         function createTextFireworks() {
             // 显示迪士尼风格文字
             disneyText.style.opacity = '1';
             
             // 文字内容和位置
-            const text = "新春快乐-ZZ";
+            const text = "新年快乐-ZZ";
             const fontSize = 60;
             const centerX = canvasW / 2;
             const centerY = canvasH / 2;
@@ -364,7 +364,7 @@
         btn.addEventListener('click', function() {
             btn.disabled = true; // 点击后禁用按钮，只触发一次专属烟花
             btn.style.opacity = 0.7;
-            createTextFireworks(); // 先炸开【新春快乐-ZZ】专属烟花
+            createTextFireworks(); // 先炸开【新年快乐-ZZ】专属烟花
             
             // 专属烟花结束后，开启无限随机烟花
             setTimeout(() => {
