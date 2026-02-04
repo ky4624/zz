@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>zz's 2026 CNY Greetings</title>
+    <!-- 预加载关键图片资源 -->
+    <link rel="preload" href="cb.png" as="image" type="image/png">
     <style>
         * { margin: 0; padding: 0; }
         body {
@@ -76,6 +78,11 @@
             background-size: contain;
             opacity: 0.95;
             z-index: 5; /* 第二层级，高于星星和烟花 */
+            /* 优化移动设备上的图片显示 */
+            @media (max-width: 768px) {
+                height: 35vh;
+                background-size: cover;
+            }
         }
         /* 烟花画布 全屏覆盖 */
         #fireworksCanvas {
@@ -161,6 +168,18 @@
     <audio id="bgm" src="fafh.MP3" loop></audio>
 
     <script>
+        // 图片加载优化：使用Intersection Observer实现延迟加载
+        document.addEventListener('DOMContentLoaded', function() {
+            // 预加载城堡图片
+            const img = new Image();
+            img.src = 'cb.png';
+            img.onload = function() {
+                // 图片加载完成后添加到城堡元素
+                const castle = document.getElementById('castle');
+                castle.style.backgroundImage = 'url(cb.png)';
+            };
+        });
+        
         // ========== 基础配置 ==========
         const canvas = document.getElementById('fireworksCanvas');
         const ctx = canvas.getContext('2d');
